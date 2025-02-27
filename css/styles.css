@@ -1,6 +1,6 @@
 :root {
-	--font-family: "Arial";
-	--font-family-mono: "Roboto Mono";
+	--font-family: "Montserrat";
+	--font-family-mono: "Montserrat";
 	--font-size-body: 100%;
 	--global-hue: 222;
 	--global-sat: 1.0;
@@ -8,32 +8,63 @@
 	--font-hue: 0;
 	--font-sat: 0;
 	--font-lit: 1.0;
-	--menu-bg-accent: #000;
-	--menu-bg-accent2: #000;
-	--breakdown-bg-accent: #000;
-	--btn-bg-accent: #000;
-	--btn-hover-accent: #fff;
-	--btn-active-accent: #fff;
-	--body-bg-accent: #000;
+
+	/* New color scheme */
+	--green: #18751b; /* Green */
+	--bronze: #CD7F32; /* Bronze */
+	--gold: #FFD700; /* Gold */
+	--white: #FFFFFF; /* White */
+	--blue: #2196F3; /* Blue */
+	--orange: #FF9800; /* Orange */
+	--purple: #9C27B0; /* Purple */
+
+	/* Background and accent colors */
+	--menu-bg-accent: var(--green);
+	--menu-bg-accent2: var(--green);
+	--breakdown-bg-accent: var(--green);
+	--btn-bg-accent: var(--gold);
+	--btn-hover-accent: var(--white);
+	--btn-active-accent: var(--white);
+	--body-bg-accent: var(--white);
+
+	/* Query colors */
 	--query-bg-accent: hsl(var(--global-hue) calc(20% * var(--global-sat)) calc(19% * var(--global-lit)));
 	--hist-header-gradient: hsl(var(--global-hue) calc(13% * var(--global-sat)) calc(10% * var(--global-lit)));
-	--table-row-odd: #000;
-	--table-row-even: #000;
+
+	/* Table row colors */
+	--table-row-odd: var(--bronze);
+	--table-row-even: var(--gold);
+
+	/* Input background accent */
 	--input-bg-accent: hsl(var(--global-hue) calc(13% * var(--global-sat)) calc(13% * var(--global-lit)));
+
+	/* Highlight date */
 	--highlight-date: hsla(var(--global-hue) calc(30% * var(--global-sat)) calc(85% * var(--global-lit)) / 0.15);
+
+	/* Drag highlight */
 	--drag-highlight: hsla(var(--global-hue) calc(80% * var(--global-sat)) calc(70% * var(--font-lit)) / 0.2);
 	--drag-highlight-border: hsl(var(--global-hue) calc(80% * var(--global-sat)) calc(70% * var(--font-lit)));
+
+	/* Placeholder color */
 	--placeholder-color: hsl(var(--global-hue) calc(20% * var(--global-sat)) calc(45% * var(--font-lit)));
-	--checkmark-accent: #fff;
+
+	/* Checkmark accent */
+	--checkmark-accent: var(--white);
+
+	/* Font colors */
 	--font-white-1: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(92% * var(--font-lit)));
-	--font-white-2: #fff;
+	--font-white-2: var(--white);
 	--font-white-3: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(63% * var(--font-lit)));
 	--font-white-4: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(30% * var(--font-lit)));
-	--border-accent: #fff;
+
+	/* Border colors */
+	--border-accent: var(--white);
 	--separator-accent: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(50% * var(--font-lit)));
 	--separator-accent2: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(30% * var(--font-lit)));
-	--border-dark-accent: #fff;
+	--border-dark-accent: var(--white);
 	--focus-outline: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(75% * var(--font-lit)));
+
+	/* Accent for break value */
 	--break-val-accent: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(41% * var(--font-lit)));
 }
 
@@ -52,15 +83,15 @@ body {
 	font-size: var(--font-size-body);
 }
 
-
+/* Selection Styles */
 ::selection {
 	color: rgb(23, 23, 23);
-	background: #000;
+	background: var(--blue);
 }
 
 ::-moz-selection {
 	color: rgb(23, 23, 23);
-	background: #000;
+	background: var(--blue);
 }
 
 ::placeholder {
@@ -91,7 +122,7 @@ a:active {
 	color: var(--font-white-2);
 }
 
-
+/* Specific Element Styles */
 #calcMain {
 	overflow: overlay;
 	height: 100%;
@@ -130,7 +161,7 @@ body {
 }
 
 body {
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	color: var(--font-white-2);
 	background-color: var(--body-bg-accent);
 }
@@ -149,7 +180,6 @@ body {
 	fill: var(--font-white-2) !important;
 }
 
-.splitInterface {}
 
 @media (min-width: 911px) {
 	.splitInterface {
@@ -234,7 +264,7 @@ body {
 	color: var(--font-white-1);
 	border: 2px solid var(--border-accent);
 	box-sizing: border-box;
-	font-family: var(--font-family-mono), monospace;
+	font-family: var(--font-family-mono), "Montserrat";
 	line-height: 1.1em;
 	background-color: var(--btn-bg-accent);
 }
@@ -254,7 +284,7 @@ body {
 	font-size: 80%;
 	color: var(--font-white-1);
 	border: 2px solid var(--border-accent);
-	font-family: var(--font-family-mono), monospace;
+	font-family: var(--font-family-mono), "Montserrat";
 	line-height: 1.1em;
 	background-color: var(--btn-bg-accent);
 }
@@ -318,7 +348,6 @@ body {
 	z-index: -1;
 }
 
-.ciphCheckbox {}
 
 .ciphCheckboxLabel {
 	font-size: 85%;
@@ -416,7 +445,7 @@ body {
 	font-weight: 500;
 	padding-right: 2px;
 	padding-left: 2px;
-	font-family: var(--font-family-mono), "Arial", sans-serif;
+	font-family: var(--font-family-mono), "Montserrat", sans-serif;
 }
 
 .breakCipher {
@@ -590,7 +619,7 @@ body {
 	color: var(--font-white-1);
 	font-weight: 500;
 	margin-left: 0.25em;
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	padding: 0.2em 0.55em 0.2em 0.55em;
 	border: 1px solid var(--border-accent);
 	background-color: var(--menu-bg-accent2);
@@ -611,7 +640,7 @@ body {
 	color: var(--font-white-1);
 	font-weight: 500;
 	border: 1px solid var(--border-accent);
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	margin-left: 0.25em;
 	font-size: 125%;
 }
@@ -621,7 +650,7 @@ body {
 	color: var(--font-white-1);
 	font-weight: 500;
 	border: 1px solid var(--border-accent);
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	font-size: 125%;
 }
 
@@ -825,7 +854,7 @@ body {
 	width: 100%;
 	font-size: 100%;
 	font-weight: 500;
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	outline: none;
 	background-color: var(--btn-bg-accent);
 	background-color: transparent;
@@ -843,7 +872,7 @@ body {
 	width: 100%;
 	font-size: 100%;
 	font-weight: 500;
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	outline: none;
 	background-color: var(--btn-bg-accent);
 	background-color: transparent;
@@ -868,7 +897,7 @@ body {
 	width: 85px;
 	font-size: 100%;
 	font-weight: 500;
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	outline: none;
 	background-color: var(--btn-bg-accent);
 	background-color: transparent;
@@ -893,7 +922,7 @@ body {
 	padding: none;
 	font-size: 150%;
 	font-weight: 600;
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	color: var(--border-accent);
 	background-color: transparent;
 	cursor: pointer;
@@ -973,7 +1002,7 @@ body {
 	color: var(--font-white-2);
 	padding: 0.4em 1.1em;
 	border: none;
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	font-size: 100%;
 	font-weight: 500;
 	outline: none;
@@ -1031,7 +1060,7 @@ body {
 	width: 50px;
 	border: none;
 	color: var(--font-white-2);
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	font-size: 85%;
 	outline: none;
 	background-color: transparent;
@@ -1104,7 +1133,7 @@ body {
 	color: var(--font-white-2);
 	background-color: black;
 	border: 1px solid var(--border-dark-accent);
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	font-size: 100%;
 	position: absolute;
 	top: 15%;
@@ -1180,7 +1209,7 @@ body {
 	background-color: var(--menu-bg-accent);
 	position: absolute;
 	z-index: 101;
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	border: 1px solid var(--border-dark-accent);
 }
 
@@ -1219,12 +1248,12 @@ body {
 
 .numPropBaseValue {
 	font-size: 110%;
-	font-family: var(--font-family-mono), sans-serif;
+	font-family: var(--font-family-mono), "Montserrat";
 }
 
 .numTicXeno {
 	font-size: 100%;
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	font-weight: 500;
 }
 
@@ -1264,7 +1293,7 @@ body {
 	background: var(--btn-bg-accent);
 	font-size: 125%;
 	color: var(--font-white-2);
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	font-weight: 500;
 	text-align: center;
 	width: 100%;
@@ -1277,7 +1306,7 @@ body {
 	background: var(--btn-bg-accent);
 	font-size: 125%;
 	color: var(--font-white-2);
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	font-weight: 500;
 	width: 500px;
 	text-align: center;
@@ -1331,7 +1360,7 @@ body {
 	text-align: center;
 	font-weight: 500;
 	font-size: 150%;
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	border: none;
 	background: transparent;
 	color: var(--font-white-2);
@@ -1343,7 +1372,7 @@ body {
 	font-weight: 500;
 	font-size: 100%;
 	padding: 0.2em 0.2em 0.2em 0.2em;
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	border: none;
 	background: transparent;
 	color: var(--font-white-2);
@@ -1442,7 +1471,7 @@ body {
 	outline: none;
 	border: none;
 	text-align: center;
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	font-weight: 600;
 	font-size: 80%;
 	padding: 0em;
@@ -1465,7 +1494,7 @@ body {
 	color: var(--font-white-1);
 	border: 2px solid var(--border-accent);
 	box-sizing: border-box;
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	font-weight: 500;
 	line-height: 1.1em;
 	background-color: var(--btn-bg-accent);
@@ -1635,7 +1664,7 @@ body {
 #querySearchInput {
 	text-align: center;
 	width: 100%;
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	font-size: 125%;
 	font-weight: 500;
 	line-height: 1.1em;
@@ -1687,7 +1716,7 @@ body {
 .quickGuide {
 	background-color: var(--menu-bg-accent2);
 	color: var(--font-white-2);
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	font-size: 100%;
 	padding: 1em 2em 1em 2em;
 	position: absolute;
@@ -1757,7 +1786,7 @@ body {
 .contactInfo {
 	background-color: var(--menu-bg-accent2);
 	color: var(--font-white-2);
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	font-size: 100%;
 	text-align: center;
 	padding: 1em 2em 1em 2em;
@@ -1785,7 +1814,7 @@ body {
 .cipherInfo {
 	background-color: var(--menu-bg-accent2);
 	color: var(--font-white-2);
-	font-family: var(--font-family), "Arial", sans-serif;
+	font-family: var(--font-family), "Montserrat", sans-serif;
 	font-size: 100%;
 	padding: 1em 2em 1em 2em;
 	position: absolute;
@@ -1816,7 +1845,7 @@ body {
 }
 
 .qgAddr {
-	font-family: var(--font-family-mono), monospace;
+	font-family: var(--font-family-mono), "Montserrat";
 	color: var(--font-white-1);
 }
 
@@ -1890,13 +1919,13 @@ input[type=checkbox] {
 
 body,
 #enabledCiphTable {
-	background: #000;
+	background: #000 !important;
 }
 
 #ChartSpotScroll *,
 #ChartSpot * {
-	background: #000 !important;
-	border-color: #000 !important;
+	background: #CD7F32 !important;
+	border-color: #CD7F32 !important;
 }
 
 table.phraseGemContainer {
