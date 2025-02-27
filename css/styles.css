@@ -15,62 +15,32 @@
 	--font-hue: 0;
 	--font-sat: 0;
 	--font-lit: 1.0;
-
-	/* New color scheme */
-	--green: #18751b; /* Green */
-	--bronze: #CD7F32; /* Bronze */
-	--gold: #FFD700; /* Gold */
-	--white: #FFFFFF; /* White */
-	--blue: #2196F3; /* Blue */
-	--orange: #FF9800; /* Orange */
-	--purple: #9C27B0; /* Purple */
-
-	/* Background and accent colors */
-	--menu-bg-accent: var(--green);
-	--menu-bg-accent2: var(--green);
-	--breakdown-bg-accent: var(--green);
+	--menu-bg-accent: #000;
+	--menu-bg-accent2: #000;
+	--breakdown-bg-accent: #000;
 	--btn-bg-accent: #000;
 	--btn-hover-accent: #fff;
 	--btn-active-accent: #fff;
-	--body-bg-accent: var(--white);
-
-	/* Query colors */
+	--body-bg-accent: #000;
 	--query-bg-accent: hsl(var(--global-hue) calc(20% * var(--global-sat)) calc(19% * var(--global-lit)));
 	--hist-header-gradient: hsl(var(--global-hue) calc(13% * var(--global-sat)) calc(10% * var(--global-lit)));
-
-	/* Table row colors */
-	--table-row-odd: var(--bronze);
-	--table-row-even: var(--gold);
-
-	/* Input background accent */
+	--table-row-odd: #000;
+	--table-row-even: #000;
 	--input-bg-accent: hsl(var(--global-hue) calc(13% * var(--global-sat)) calc(13% * var(--global-lit)));
-
-	/* Highlight date */
 	--highlight-date: hsla(var(--global-hue) calc(30% * var(--global-sat)) calc(85% * var(--global-lit)) / 0.15);
-
-	/* Drag highlight */
 	--drag-highlight: hsla(var(--global-hue) calc(80% * var(--global-sat)) calc(70% * var(--font-lit)) / 0.2);
 	--drag-highlight-border: hsl(var(--global-hue) calc(80% * var(--global-sat)) calc(70% * var(--font-lit)));
-
-	/* Placeholder color */
 	--placeholder-color: hsl(var(--global-hue) calc(20% * var(--global-sat)) calc(45% * var(--font-lit)));
-
-	/* Checkmark accent */
 	--checkmark-accent: #fff;
-	--border-accent: #fff;
-
-	/* Font colors */
 	--font-white-1: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(92% * var(--font-lit)));
-	--font-white-2: var(--white);
+	--font-white-2: #fff;
 	--font-white-3: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(63% * var(--font-lit)));
 	--font-white-4: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(30% * var(--font-lit)));
-
+	--border-accent: #fff;
 	--separator-accent: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(50% * var(--font-lit)));
 	--separator-accent2: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(30% * var(--font-lit)));
-	--focus-outline: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(75% * var(--font-lit)));
 	--border-dark-accent: #fff;
-
-	/* Accent for break value */
+	--focus-outline: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(75% * var(--font-lit)));
 	--break-val-accent: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(41% * var(--font-lit)));
 }
 
@@ -1930,8 +1900,8 @@ body,
 
 #ChartSpotScroll *,
 #ChartSpot * {
-	background: #CD7F32 !important;
-	border-color: #CD7F32 !important;
+	background: #000 !important;
+	border-color: #000 !important;
 }
 
 table.phraseGemContainer {

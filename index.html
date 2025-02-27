@@ -34,10 +34,39 @@
 
     <div id="calcMain">
       <center>
-        <h5 class="mainheading" style="color: #ff9b00">Quelle Productions</h5>
+        <h5 class="mainheading">Quelle Productions</h5>
+
+        <div id="colorControlsMenuArea"></div>
+        <div id="editCiphersMenuArea"></div>
+        <div id="dateCalcMenuArea"></div>
+
+        <h5 class="inputheading">entry</h5>
+        <div id="inputArea">
+          <input
+            id="queryDBbtn"
+            class="hideValue"
+            type="button"
+            value="Query"
+          />
+          <input
+            id="phraseBox"
+            autofocus=""
+            type="text"
+            spellcheck="false"
+            autocomplete="off"
+          />
+          <input id="enterPhraseBtn" type="button" value="▼" />
+          <input
+            id="highlightBox"
+            type="text"
+            spellcheck="false"
+            autocomplete="off"
+          /><span id="clearFilterButton"></span>
+        </div>
+
         <div id="calcOptionsPanel">
           <div class="dropdown">
-            <button class="dropbtn" style="color: #ff9b00">Ciphers</button>
+            <button class="dropbtn">Ciphers</button>
             <div class="dropdown-content" style="width: 380px">
               <div>
                 <center>
@@ -181,35 +210,6 @@
             </div>
           </div>
         </div>
-
-        <div id="colorControlsMenuArea"></div>
-        <div id="editCiphersMenuArea"></div>
-        <div id="dateCalcMenuArea"></div>
-
-        <h5 class="inputheading" style="color: #ff9b00">INPUT WORDS OR NUMBERS:</h5>
-        <div id="inputArea">
-          <input
-            id="queryDBbtn"
-            class="hideValue"
-            type="button"
-            value="Query"
-          />
-          <input
-            id="phraseBox"
-            autofocus=""
-            type="text"
-            spellcheck="false"
-            autocomplete="off"
-          />
-          <input id="enterPhraseBtn" type="button" value="▼" />
-          <input
-            id="highlightBox"
-            type="text"
-            spellcheck="false"
-            autocomplete="off"
-          /><span id="clearFilterButton"></span>
-        </div>
-
         <div id="enabledCiphTable">
           <table class="phraseGemContainer">
             <tbody>
