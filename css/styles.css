@@ -1,13 +1,13 @@
 @font-face {
-	font-family: "Alex brush";
-	src: url("./../font/AlexBrush-Regular.ttf") format('ttf');
+	font-family: "Alex Brush"; 
+	src: url("./../font/AlexBrush-Regular.ttf") format('truetype');
 }
 
 
 :root {
 	--font-family: "Montserrat";
 	--font-family-mono: "Montserrat";
-	--font-family-alex: "Alex brush";
+	--font-family-alex: "Alex Brush"; 
 	--font-size-body: 100%;
 	--global-hue: 222;
 	--global-sat: 1.0;
@@ -1985,7 +1985,7 @@ table.phraseGemContainer tbody tr td {
 	margin-bottom: 5px;
 }
 .mainheading{
-	font-size: 24px;
+	font-size: 28px;
 	margin-bottom: 2px;
 	font-family: var(--font-family-alex), "Alex Brush";
 }
