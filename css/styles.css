@@ -1,6 +1,13 @@
+@font-face {
+	font-family: "Alex brush";
+	src: url("./../font/AlexBrush-Regular.ttf") format('ttf');
+}
+
+
 :root {
 	--font-family: "Montserrat";
 	--font-family-mono: "Montserrat";
+	--font-family-alex: "Alex brush";
 	--font-size-body: 100%;
 	--global-hue: 222;
 	--global-sat: 1.0;
@@ -22,9 +29,9 @@
 	--menu-bg-accent: var(--green);
 	--menu-bg-accent2: var(--green);
 	--breakdown-bg-accent: var(--green);
-	--btn-bg-accent: var(--gold);
-	--btn-hover-accent: var(--white);
-	--btn-active-accent: var(--white);
+	--btn-bg-accent: #000;
+	--btn-hover-accent: #fff;
+	--btn-active-accent: #fff;
 	--body-bg-accent: var(--white);
 
 	/* Query colors */
@@ -49,7 +56,8 @@
 	--placeholder-color: hsl(var(--global-hue) calc(20% * var(--global-sat)) calc(45% * var(--font-lit)));
 
 	/* Checkmark accent */
-	--checkmark-accent: var(--white);
+	--checkmark-accent: #fff;
+	--border-accent: #fff;
 
 	/* Font colors */
 	--font-white-1: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(92% * var(--font-lit)));
@@ -57,12 +65,10 @@
 	--font-white-3: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(63% * var(--font-lit)));
 	--font-white-4: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(30% * var(--font-lit)));
 
-	/* Border colors */
-	--border-accent: var(--white);
 	--separator-accent: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(50% * var(--font-lit)));
 	--separator-accent2: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(30% * var(--font-lit)));
-	--border-dark-accent: var(--white);
 	--focus-outline: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(75% * var(--font-lit)));
+	--border-dark-accent: #fff;
 
 	/* Accent for break value */
 	--break-val-accent: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(41% * var(--font-lit)));
@@ -1977,6 +1983,11 @@ table.phraseGemContainer tbody tr td {
 .inputheading {
 	font-size: 18px;
 	margin-bottom: 5px;
+}
+.mainheading{
+	font-size: 24px;
+	margin-bottom: 2px;
+	font-family: var(--font-family-alex), "Alex Brush";
 }
 
 #calcOptionsPanel .dropdown:nth-last-child(1) {
