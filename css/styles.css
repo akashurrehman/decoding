@@ -2075,3 +2075,7 @@ input::placeholder,
 textarea::placeholder {
 	color: #ccc !important;
 }
+
+.color-first-third {
+    color: #F29960 !important; /* Green color for example */
+  }
