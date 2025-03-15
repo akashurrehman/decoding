@@ -1,0 +1,115 @@
+header {
+  
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 94%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.logo img {
+    height: 88px;
+}
+
+nav {
+    text-align: center;
+    margin-right: 23px;
+}
+.logo a{
+    border-bottom: none;
+}
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links li {
+    margin: 0 3px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.8em;
+    display: block;
+    margin-bottom: 10px;
+    border-bottom: 0;
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+}
+.nav-links a:after{
+	position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0%;
+    background-color: #fff;
+    transition: 0.2s;
+}
+
+.nav-links a:hover:after, .nav-links a.active:after {
+    width: 100%;
+}
+.hero {
+    text-align: center;
+}
+.hero img{
+    max-width: 75%;
+    height: auto;
+}
+
+#phraseBox::selection {
+    background-color: yellow;
+}
+
+footer{background-color: #000000;padding: 30px 0;}
+	footer .container { margin-top: 0 !important;}
+	/* footer p{} */
+	footer img{height: 80px;}
+	footer ul{margin: 0;padding: 0 ;list-style: none;  display: flex;}
+	/* footer ul li{} */
+	footer ul li a i{text-decoration: none !important;color: #999 ;}
+	footer ul li a:hover i{text-decoration: none !important;color: #fff ;}
+	/* footer a:link{border-bottom: 0 !important;} */
+	footer ul li a{ text-decoration: none !important;display: block;border: 1px solid rgba(253,253,253,0.1) !important; height: 50px;width: 50px;line-height: 50px;text-align: center;margin-left: 10px;border-radius: 10px;} 
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        display: none;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        margin: 10px 0;
+    }
+    .icons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        flex-direction: column;
+    }
+    .logo img {
+        height: 30px;
+    }
+    .icons a {
+        margin: 10px 0;
+    }
+}

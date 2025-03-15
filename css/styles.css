@@ -1,6 +1,33 @@
 @font-face {
+	font-family: "matrix-font";
+	src: url("../font/matrix-font.woff2") format('woff2');
+}
+
+@font-face {
 	font-family: "Alex Brush"; 
 	src: url("./../font/AlexBrush-Regular.ttf") format('truetype');
+}
+
+@font-face {
+	font-family: "Montserrat";
+	src: url("../font/montserrat-400.woff2") format('woff2');
+}
+
+@font-face {
+	font-family: "Montserrat";
+	src: url("../font/montserrat-500.woff2") format('woff2');
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: "Montserrat";
+	src: url("../font/montserrat-600.woff2") format('woff2');
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "Roboto Mono";
+	src: url("../font/roboto-mono-400.woff2") format('woff2');
 }
 @font-face {
     font-family: "Cardo"; 
@@ -22,7 +49,7 @@
 	--font-lit: 1.0;
 	--menu-bg-accent: #000;
 	--menu-bg-accent2: #000;
-	--breakdown-bg-accent: #000;
+	--breakdown-bg-accent:#000;
 	--btn-bg-accent: #000;
 	--btn-hover-accent: #fff;
 	--btn-active-accent: #fff;
@@ -49,33 +76,34 @@
 	--break-val-accent: hsl(var(--font-hue) calc(100% * var(--font-sat)) calc(41% * var(--font-lit)));
 }
 
-html,
-body {
+html, body { /* full <body> height for <!DOCTYPE html> */
 	height: 100%;
 	min-height: 100%;
 	padding: 0;
 	margin: 0;
 }
 
-body {
+body { /* disable Chromium's Text Autosizer (mobile text inflation algorithm) */
 	-webkit-text-size-adjust: none;
 	-moz-text-size-adjust: none;
 	text-size-adjust: none;
 	font-size: var(--font-size-body);
 }
 
-/* Selection Styles */
+/*               Text Selection               */
+/* ########################################## */
+
 ::selection {
-	color: rgb(23, 23, 23);
-	background: var(--blue);
+	color: rgb(23,23,23);
+	background: #000;
 }
 
 ::-moz-selection {
-	color: rgb(23, 23, 23);
-	background: var(--blue);
+	color: rgb(23,23,23);
+	background: #000;
 }
 
-::placeholder {
+::placeholder { /* input placeholder */
 	color: var(--placeholder-color);
 	opacity: 1;
 }
@@ -83,33 +111,31 @@ body {
 a {
 	text-decoration: none;
 }
-
 a:link {
 	color: var(--font-white-2);
 	border-bottom: 1px solid var(--font-white-2);
 }
-
 a:visited {
 	color: var(--font-white-3);
 	border-bottom: 1px solid var(--font-white-3);
 }
-
 a:hover {
 	color: var(--font-white-1);
 	border-bottom: 1px solid var(--font-white-1);
 }
-
-a:active {
+a:active{
 	color: var(--font-white-2);
 }
 
-/* Specific Element Styles */
+/*               Scrollbar Style              */
+/* ########################################## */
+
 #calcMain {
-	overflow: overlay;
+	overflow: overlay; /* prevent page scroll in Query Table */
 	height: 100%;
 }
 
-#loader {
+#loader{ /* fade in on page load*/
 	z-index: 101;
 	display: block;
 	position: fixed;
@@ -131,18 +157,22 @@ body {
 
 ::-webkit-scrollbar-thumb {
 	background: rgba(128, 128, 128, 0.5);
+	/*border-radius: 20px;*/
 }
 
 ::-webkit-scrollbar-track {
 	background: rgba(0, 0, 0, 0.2);
 }
 
-::-webkit-scrollbar-corner {
+::-webkit-scrollbar-corner
+{
 	background: rgba(0, 0, 0, 0.2);
 }
 
+/* ########################################## */
+
 body {
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	color: var(--font-white-2);
 	background-color: var(--body-bg-accent);
 }
@@ -150,19 +180,17 @@ body {
 .gematroLogo {
 	display: flex;
 	justify-content: center;
+	/*padding-bottom: 0.4em;*/
 }
-
 .gematroLogo svg {
 	height: 10px !important;
 	width: auto !important;
 }
-
 .gematroLogo svg path {
 	fill: var(--font-white-2) !important;
 }
-
-
-@media (min-width: 911px) {
+.splitInterface {}
+@media (min-width: 911px) { /* desktop */
 	.splitInterface {
 		width: 70%;
 		position: absolute;
@@ -172,7 +200,6 @@ body {
 		height: 100%;
 	}
 }
-
 .colorControlsBG {
 	position: relative;
 	background-color: var(--menu-bg-accent);
@@ -182,19 +209,15 @@ body {
 	margin: 0.5em 0em 0.5em 0em;
 	border: 1px solid var(--border-dark-accent);
 }
-
-.colLabelSmall,
-.colLabelSmallEnc {
+.colLabelSmall, .colLabelSmallEnc {
 	font-size: 80%;
 	font-weight: 500;
 	text-align: right;
 	padding: 0em 0.1em 0em 0.4em;
 }
-
 .colLabelSmallEnc {
 	text-align: left;
 }
-
 .colLabel {
 	font-size: 90%;
 	font-weight: 500;
@@ -202,14 +225,12 @@ body {
 	text-align: center;
 	padding-right: 0.4em;
 }
-
 #enabledCiphTable {
 	width: 100%;
 	padding: 1em 0em 0em 0em;
 	display: flex;
 	justify-content: center;
 }
-
 #inputArea {
 	padding: 0.5em 0em 0em 0em;
 	display: inline-flex;
@@ -218,11 +239,9 @@ body {
 	-ms-user-select: none;
 	user-select: none;
 }
-
 #HistoryTableArea {
 	padding-bottom: 0.1em;
 }
-
 #calcOptionsPanel {
 	padding: 0.6em 0em 0em 0em;
 	-webkit-user-select: none;
@@ -230,50 +249,42 @@ body {
 	-ms-user-select: none;
 	user-select: none;
 }
-
 .ciphToggleContainer {
 	display: inline-block;
 	padding: 0.5em 0.5em 0.2em 0.5em;
 	border-spacing: 0em;
 	text-align: left;
 }
-
-.colSlider,
-.colSlider2 {
+.colSlider, .colSlider2 {
 	width: 55px;
 	font-size: 80%;
 	color: var(--font-white-1);
 	border: 2px solid var(--border-accent);
 	box-sizing: border-box;
-	font-family: var(--font-family-mono), "Cardo";
+	font-family: var(--font-family-mono), monospace;
 	line-height: 1.1em;
 	background-color: var(--btn-bg-accent);
 }
-
 .colSlider2 {
 	width: 65px;
 }
-
-@media (max-width: 911px) {
+@media (max-width: 911px) { /* mobile */
 	.colSlider2 {
 		width: 40px;
 	}
 }
-
 .cipherColValueBox {
 	width: 85px;
 	font-size: 80%;
 	color: var(--font-white-1);
 	border: 2px solid var(--border-accent);
-	font-family: var(--font-family-mono), "Cardo";
+	font-family: var(--font-family-mono), monospace;
 	line-height: 1.1em;
 	background-color: var(--btn-bg-accent);
 }
-
 .globColCtrlTable {
 	padding-right: 1.25em;
 }
-
 .phraseGemContainer {
 	display: inline-block;
 	border: 1px solid var(--border-dark-accent);
@@ -282,17 +293,13 @@ body {
 	font-weight: 500;
 	line-height: 1.0em;
 }
-
 .phraseGemContainer tr:nth-child(odd) {
 	background-color: var(--table-row-odd);
 }
-
 .phraseGemContainer tr:nth-child(even) {
 	background-color: var(--table-row-even);
 }
-
-.phraseGemValueOdd,
-.phraseGemValueEven {
+.phraseGemValueOdd, .phraseGemValueEven {
 	font-size: 180%;
 	text-align: center;
 	min-width: 80px;
@@ -303,20 +310,17 @@ body {
 	font-weight: 600;
 	padding: 0em 0.1em 0em 0.1em;
 }
-
 .phraseGemCiphName {
 	padding: 0.2em 0.5em;
-	max-width: 115px;
+	max-width: 115px; /* 110px */
 	height: 32px;
 	cursor: pointer;
 }
-
 .phraseGemCiphNameBlank {
 	padding: 0.2em 0.5em;
-	max-width: 115px;
+	max-width: 115px; /* 110px */
 	height: 32px;
 }
-
 #canv {
 	margin: 0;
 	padding: 0;
@@ -324,61 +328,56 @@ body {
 	touch-action: none;
 	width: 100%;
 	height: 100%;
-	top: 0;
-	left: 0;
-	z-index: -1;
+	top:0;
+	left:0;
+	z-index : -1; /* behind all elements */ 
 }
-
-
+.ciphCheckbox {
+}
 .ciphCheckboxLabel {
 	font-size: 85%;
 	font-weight: 500;
 	padding: 0em 0.6em 0em 0em;
 	white-space: nowrap;
 }
-
 .ciphCheckboxLabel2 {
-	font-size: 18px;
+	font-size: 100%;
 	font-weight: 500;
 	padding: 0em 0em 0em 0.1em;
 	white-space: nowrap;
 }
-
 .dragOver {
 	border: 1px solid var(--drag-highlight-border) !important;
 	background-color: var(--drag-highlight) !important;
 }
 
+/*  Word Breakdown, Cipher Table, Word Count  */
+/* ########################################## */
+
 #ChartSpot {
-	display: flex;
-	/* vertically center */
+	/*min-height: 189px;*/ /* fix content shift */
+	display: flex; /* vertically center */
 	justify-content: center;
 	align-items: center;
 	width: -webkit-fit-content;
 	width: -moz-fit-content;
+	/* padding: 0.8em; */
 	border: 1px solid var(--border-dark-accent);
+    /* margin-top: 1em;
+	margin-bottom: 0.5em; */
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	#ChartSpot {
 		padding: 0em 0.8em !important;
 	}
-
 	#ChartSpotScroll {
 		width: 90vw;
 		overflow: auto;
 	}
 }
-
 .ChartSpotScrollStop {
 	width: unset !important;
 	overflow: unset !important;
-}
-
-#BreakdownSpot {
-	padding-bottom: 0.5em;
 }
 
 #BreakdownDetails {
@@ -386,143 +385,114 @@ body {
 	width: -webkit-fit-content;
 	width: -moz-fit-content;
 }
-
 #SimpleBreak {
 	max-width: 800px;
 	margin: auto;
 	padding-bottom: 1em;
 	text-align: center;
 }
-
 #BreakSumLong {
 	margin: auto;
 	padding: 0.5em 0em;
 	text-align: center;
 }
-
 .SimpleBreakChart {
 	max-width: 800px;
 }
-
 .SimpleBreakChartLong {
 	max-width: 720px;
 	padding: 0.75em 1em 0.35em 1em;
 	text-align: center;
 }
-
 #BreakTableContainer {
 	padding: 0.4em 0.4em 0.4em 0.8em;
 	border: 1px solid var(--border-dark-accent);
 	width: -webkit-fit-content;
 	width: -moz-fit-content;
 }
-
 .BreakRTL {
 	padding: 0.4em 0.8em 0.4em 0.4em !important;
 }
-
 .BreakChar {
 	font-size: 115%;
 	font-weight: 500;
 	padding-right: 2px;
 	padding-left: 2px;
-	font-family: var(--font-family-mono), "Cardo", sans-serif;
+	font-family: var(--font-family-mono), "Arial", sans-serif;
 }
-
 .breakCipher {
 	font-size: 115%;
 	font-weight: 500;
 	display: inline-block;
 }
-
-.breakSum,
-.breakSumDark {
+.breakSum, .breakSumDark {
 	font-size: 125%;
 	color: var(--font-white-1);
 	font-weight: 600;
 }
-
 .breakSumDark {
 	color: var(--font-white-2);
 }
-
 .breakPhrase {
 	font-size: 125%;
 	color: var(--font-white-2);
 	font-weight: 500;
 }
-
 .breakPhraseChart {
 	font-size: 120%;
 	font-weight: 500;
 	color: var(--font-white-2);
 }
-
 .breakPhraseChartCiphName {
 	font-size: 115%;
 	font-weight: 500;
 	display: inline-block;
 }
-
 .BreakPhraseSum {
 	font-weight: 500;
 	font-size: 175%;
 	padding-left: 10px;
 	padding-right: 10px;
 }
-
-.BreakTable,
-.BreakTableRow {
+.BreakTable, .BreakTableRow {
 	text-align: center;
 	border-spacing: 0px;
 	margin: auto;
 	width: -webkit-fit-content;
 	width: -moz-fit-content;
 }
-
-.BreakTable td,
-.BreakTableRow td {
+.BreakTable td, .BreakTableRow td {
 	min-width: 14px;
 }
-
 .BreakTableRow {
 	padding: 0em 0.75em;
 }
-
-.BreakVal,
-.BreakValDark {
+.BreakVal, .BreakValDark {
 	color: var(--focus-outline);
-	font-weight: 600;
+    font-weight: 600;
 	font-size: 74%;
 	padding-right: 3px;
 	padding-left: 3px;
 }
-
 .BreakValDark {
 	color: var(--break-val-accent);
 }
-
 .BreakWordSum {
 	font-size: 115%;
 	padding-right: 5px;
 	padding-left: 5px;
 	font-weight: 500;
 }
-
 #ChartTable {
 	border-spacing: 0px;
 }
-
 #ChartTable td {
 	text-align: center;
 	border: none;
 	padding: 0.1em 0.25em 0.2em 0.25em;
 	min-width: 22px;
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	#ChartTable td {
 		padding: 0.1em 0.15em 0.2em 0.15em;
 	}
@@ -533,7 +503,6 @@ body {
 	border-right: 1px solid var(--border-accent) !important;
 	border-top: 1px solid var(--border-accent) !important;
 }
-
 .borderCipherTable td {
 	border-left: 1px solid var(--border-accent) !important;
 	border-bottom: 1px solid var(--border-accent) !important;
@@ -542,7 +511,6 @@ body {
 	padding-top: 1px !important;
 	padding-bottom: 2px !important;
 }
-
 .borderClassGemCard {
 	border: 1px solid var(--border-accent) !important;
 }
@@ -550,33 +518,25 @@ body {
 .ChartChar {
 	font-size: 140%;
 }
-
 .ChartVal {
 	font-size: 120%;
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	.ChartVal {
 		font-size: 110%;
 	}
 }
-
-.CipherEnd,
-.CipherEndRTL {
+.CipherEnd, .CipherEndRTL {
 	font-size: 90%;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	font-weight: 500;
 	padding-right: 0.5em;
 }
-
 .CipherEndRTL {
 	padding-right: 0em;
 	padding-left: 0.5em;
 }
-
 .LetterCounts {
 	color: var(--font-white-2);
 	font-size: 90%;
@@ -585,9 +545,7 @@ body {
 	padding-bottom: 1em;
 }
 
-.ChartChar,
-.ChartVal,
-#capsNameChartBtn {
+.ChartChar, .ChartVal, #capsNameChartBtn {
 	cursor: pointer;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -595,12 +553,15 @@ body {
 	user-select: none;
 }
 
+/*        Buttons, Text Boxes, Controls       */
+/* ########################################## */
+
 #btn-clear-active-filter {
 	position: relative;
 	color: var(--font-white-1);
 	font-weight: 500;
 	margin-left: 0.25em;
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	padding: 0.2em 0.55em 0.2em 0.55em;
 	border: 1px solid var(--border-accent);
 	background-color: var(--menu-bg-accent2);
@@ -608,82 +569,61 @@ body {
 	outline: none;
 }
 
-#btn-clear-active-filter:hover {
-	background-color: var(--btn-hover-accent);
-}
-
-#btn-clear-active-filter:active {
-	background-color: var(--btn-active-accent);
-}
+#btn-clear-active-filter:hover { background-color: var(--btn-hover-accent); }
+#btn-clear-active-filter:active { background-color: var(--btn-active-accent); }
 
 #highlightBox {
 	background-color: var(--input-bg-accent);
 	color: var(--font-white-1);
 	font-weight: 500;
 	border: 1px solid var(--border-accent);
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	margin-left: 0.25em;
 	font-size: 125%;
 }
-
 #phraseBox {
 	background-color: var(--input-bg-accent);
 	color: var(--font-white-1);
 	font-weight: 500;
 	border: 1px solid var(--border-accent);
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	font-size: 125%;
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
-	#inputArea {
-		display: block;
-	}
-
+@media (max-width: 911px) { /* mobile */
+	#inputArea{display: block;}
 	#phraseBox {
 		width: 50%;
 	}
-
 	#highlightBox {
 		width: 100px;
 	}
 }
-
-@media (min-width: 911px) {
-
-	/* desktop */
+@media (min-width: 911px) { /* desktop */
 	#phraseBox {
 		width: 500px;
 	}
-
 	#highlightBox {
 		width: 200px;
 	}
 }
-
-#phraseBox:focus,
-#highlightBox:focus {
+#phraseBox:focus, #highlightBox:focus {
 	outline: none !important;
-	border: 1px solid var(--focus-outline);
+	border:1px solid var(--focus-outline);
 }
 
-.HistoryTable tr,
-.HistoryTable td {
+/*                History Table               */
+/* ########################################## */
+
+.HistoryTable tr, .HistoryTable td {
 	border-bottom: 1px solid var(--border-dark-accent);
 	border-left: 1px solid var(--border-dark-accent);
 }
-
-.cH {
-	/* cipher header bar, history table */
-	background: -webkit-linear-gradient(0deg, var(--hist-header-gradient), transparent);
-	/*20,23,27*/
+.cH { /* cipher header bar, history table */
+	background: -webkit-linear-gradient(0deg, var(--hist-header-gradient), transparent); /*20,23,27*/
 	background: -moz-linear-gradient(0deg, var(--hist-header-gradient), transparent);
 	background: -o-linear-gradient(0deg, var(--hist-header-gradient), transparent);
 	background: linear-gradient(0deg, var(--hist-header-gradient), transparent);
 }
-
 .HistoryTable {
 	text-align: center;
 	border-spacing: 0px;
@@ -691,15 +631,12 @@ body {
 	border-right: 1px solid var(--border-dark-accent);
 	margin: 0.5em 1em 2.4em 1em;
 }
-
 .HistoryTable tr:nth-child(odd) {
 	background-color: var(--table-row-odd);
 }
-
 .HistoryTable tr:nth-child(even) {
 	background-color: var(--table-row-even);
 }
-
 #QueryTable {
 	table-layout: fixed;
 	width: 100%;
@@ -708,30 +645,25 @@ body {
 	float: right;
 	border-top: none;
 }
-
-.hC {
+.hC { /* history table header, cipher name cell */
 	min-width: 80px;
 	max-width: 80px;
 	font-size: 85%;
 	padding: 5px 3px 5px 3px;
 	text-align: center;
 	font-weight: 500;
-	word-break: break-word;
+	word-break: break-word; /* affects table performance */
 }
-
-.hCV,
-.hCVQ {
+.hCV, .hCVQ { /* vertical history table header, cipher name cell */
 	font-size: 85%;
 	height: 180px;
 	text-align: center;
 	vertical-align: bottom;
 	font-weight: 500;
 }
-
-.hCVQ {
+.hCVQ { /* vertical query table header, cipher name cell */
 	width: 55px;
 }
-
 .hCV2 {
 	transform: rotate(-90deg);
 	transform-origin: left;
@@ -740,93 +672,76 @@ body {
 	width: 20px;
 	margin-left: 1.6em;
 }
-
-.hP {
+.hP { /* history phrase */
 	text-align: right;
 	padding: 0em 0.5em 0em 0.5em;
 	font-size: 110%;
 }
-
-@media (min-width: 911px) {
-
-	/* desktop */
-	.hP {
-		white-space: nowrap;
+@media (min-width: 911px) { /* desktop */
+	.hP { /* single line history phrase */
+		white-space: nowrap; /* affects table performance */
 	}
 }
-
-.hPQ {
+.hPQ { /* history phrase - query table*/
 	text-align: right;
 	padding: 0em 0.5em 0em 0.5em;
 	font-size: 110%;
 }
-
-.mP,
-.mPQ {
+.mP, .mPQ { /* history table - top left cell */
 	font-weight: 500;
 	font-size: 125%;
 }
-
-.mPQ {
+.mPQ { /* query table - top left cell */
+	/*width: 300px;*/
 	height: 150px;
 }
-
-.gV,
-.gVQ {
+.gV, .gVQ { /* gematria value in history/query table */
 	font-size: 125%;
 	font-weight: 500;
 	cursor: pointer;
 }
-
 .gV {
 	padding: 0em 0.2em;
 }
-
-.pCHT {
+.pCHT { /* phrase comment - history table */
 	font-size: 75%;
 	font-weight: 500;
+	/*color: hsl(0 0% 30% / 1);*/
 	color: var(--font-white-4);
 	padding-right: 0.35em;
 }
 
 /* -------------- Highlighting -------------- */
 .highlightCipherTable {
-	background: rgba(192, 192, 192, 0.15);
+	background: rgba(192,192,192,0.15);
 }
-
-.hideValue {
-	display: none !important;
-}
-
+.hideValue {display: none !important;}
 @keyframes blink {
 	0% {
 		opacity: 0.0;
 	}
-
 	25% {
 		opacity: 1.0;
 	}
-
 	75% {
 		opacity: 1.0;
 	}
-
 	100% {
 		opacity: 0.0;
 	}
 }
-
 .highlightValueBlink {
 	animation: blink 500ms linear infinite;
 	z-index: 99;
 }
-
 .selectedPhrase {
 	background-color: hsla(var(--global-hue) 15% 50% / 0.2)
 }
 
-.intBtn {
-	/* Big Buttons */
+/*                Options Menu                */
+/* ########################################## */
+
+.intBtn { /* Big Buttons */
 	display: inline-block;
 	color: var(--font-white-1);
 	color: var(--font-white-2);
@@ -835,40 +750,31 @@ body {
 	width: 100%;
 	font-size: 100%;
 	font-weight: 500;
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	outline: none;
 	background-color: var(--btn-bg-accent);
 	background-color: transparent;
 }
-
-.intBtn2,
-.ciphEditBtn {
-	/* Cipher Categories */
+.intBtn2, .ciphEditBtn { /* Cipher Categories */
 	display: inline-block;
 	color: var(--font-white-1);
 	color: var(--font-white-2);
 	padding: 0.2em 0.4em;
 	margin: 0.1em 0em;
-	border: 1px solid var(--border-accent);
+	border: 1px solid var(--border-accent);	  
 	width: 100%;
 	font-size: 100%;
 	font-weight: 500;
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	outline: none;
 	background-color: var(--btn-bg-accent);
 	background-color: transparent;
 }
-
 .ciphEditBtn {
 	width: auto;
 	margin: 0.75em 0.5em 0em 0.5em;
 }
-
-.intBtn3,
-.intBtnResetDate,
-#queryDBbtn,
-#enterPhraseBtn {
-	/* Empty, Default, All */
+.intBtn3, .intBtnResetDate, #queryDBbtn, #enterPhraseBtn { /* Empty, Default, All */
 	display: inline-block;
 	color: var(--font-white-1);
 	color: var(--font-white-2);
@@ -878,20 +784,16 @@ body {
 	width: 85px;
 	font-size: 100%;
 	font-weight: 500;
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	outline: none;
 	background-color: var(--btn-bg-accent);
 	background-color: transparent;
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	#queryDBbtn {
 		width: 40px !important;
 	}
 }
-
 .closeMenuBtn {
 	position: absolute;
 	right: -29px;
@@ -903,34 +805,28 @@ body {
 	padding: none;
 	font-size: 150%;
 	font-weight: 600;
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	color: var(--border-accent);
 	background-color: transparent;
 	cursor: pointer;
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	.closeMenuBtn {
 		right: 0px !important;
 		top: 0px !important;
 	}
 }
-
 .intBtnResetDate {
 	font-size: 80%;
 	width: auto;
 	margin: 0em;
 	padding: 0.3em 0.6em 0.3em 0.6em;
 }
-
 #queryDBbtn {
 	padding: 0em;
 	margin: 0em 0.3em;
 	width: 75px;
 }
-
 #enterPhraseBtn {
 	background-color: var(--input-bg-accent);
 	padding: 0em;
@@ -939,7 +835,6 @@ body {
 	max-width: 30px;
 	color: var(--border-accent);
 }
-
 #calcNotification {
 	position: absolute;
 	left: 50%;
@@ -954,26 +849,10 @@ body {
 	text-align: center;
 	z-index: 1000;
 }
-
-.intBtn:hover,
-.intBtn2:hover,
-.ciphEditBtn:hover,
-.intBtn3:hover,
-.intBtnResetDate:hover,
-#queryDBbtn:hover,
-#enterPhraseBtn:hover,
-.queryPageBtn:hover {
+.intBtn:hover, .intBtn2:hover, .ciphEditBtn:hover, .intBtn3:hover, .intBtnResetDate:hover, #queryDBbtn:hover, #enterPhraseBtn:hover, .queryPageBtn:hover {
 	background-color: var(--btn-hover-accent);
 }
-
-.intBtn:active,
-.intBtn2:active,
-.ciphEditBtn:active,
-.intBtn3:active,
-.intBtnResetDate:active,
-#queryDBbtn:active,
-#enterPhraseBtn:active,
-.queryPageBtn:active {
+.intBtn:active, .intBtn2:active, .ciphEditBtn:active, .intBtn3:active, .intBtnResetDate:active, #queryDBbtn:active, #enterPhraseBtn:active, .queryPageBtn:active {
 	background-color: var(--btn-active-accent);
 }
 
@@ -983,12 +862,11 @@ body {
 	color: var(--font-white-2);
 	padding: 0.4em 1.1em;
 	border: none;
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	font-size: 100%;
 	font-weight: 500;
 	outline: none;
 }
-
 .optionElementTable {
 	border-spacing: 0;
 	text-align: center;
@@ -1001,12 +879,10 @@ body {
 	font-weight: 500;
 	width: 87%;
 }
-
 .optionElementTable td {
 	border-bottom: 1px solid var(--border-accent);
 	padding: 0.3em;
 }
-
 .enterAsWordsLimit {
 	border: 1px solid var(--border-accent);
 	text-align: right;
@@ -1017,7 +893,6 @@ body {
 	border-top: none;
 	padding-bottom: 0.1em;
 }
-
 .dbOptionsBox {
 	margin: auto;
 	border: 1px solid var(--border-accent);
@@ -1030,91 +905,73 @@ body {
 	border-top: none;
 	padding-bottom: 0.1em;
 }
-
 .optionTableLabel {
 	font-size: 80%;
 }
-
-#phrLimitBox,
-#dbPageItemsBox,
-#dbScrollItemsBox {
+#phrLimitBox, #dbPageItemsBox, #dbScrollItemsBox {
 	width: 50px;
 	border: none;
 	color: var(--font-white-2);
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	font-size: 85%;
 	outline: none;
 	background-color: transparent;
 	text-align: center;
 	font-weight: 500;
 }
-
 .optionElement {
 	margin: 0.3em 1em;
-	white-space: nowrap;
-	/* text on one line */
+	white-space: nowrap; /* text on one line */
 }
-
 .optionElementLabel {
 	margin: 0em 0.4em 0em 0.3em;
 	color: var(--font-white-2);
 	font-weight: 500;
 }
-
 .dropdown {
 	position: relative;
 	display: inline-block;
 }
-
-.dropdown-content,
-.dropdown-content-opt {
+.dropdown-content, .dropdown-content-opt {
 	display: none;
 	position: absolute;
 	left: -10px;
-	z-index: 200;
+	z-index: 200; /* above other elements */
 	padding: 1em;
 	text-align: left;
 	background-color: var(--menu-bg-accent2);
-	border: 1px solid var(--border-dark-accent);
+	border: 1px solid var(--border-dark-accent); /* --body-bg-accent */
+	/*border-top: none;*/
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	.dropdown {
 		position: unset !important;
 	}
-
-	.dropdown-content,
-	.dropdown-content-opt {
+	.dropdown-content, .dropdown-content-opt {
 		left: 50% !important;
 		transform: translateX(-50%);
 	}
-
 	.dropdown-about {
 		transform: none !important;
 	}
 }
-
 .dropdown-content-opt {
 	padding: 0.5em;
 }
 
-.dropdown:hover .dropdown-content,
-.dropdown:hover .dropdown-content-opt {
-	display: block;
-}
+.dropdown:hover .dropdown-content, .dropdown:hover .dropdown-content-opt {display: block;}
 
-.dropdown:hover .dropbtn {
-	background-color: var(--btn-active-accent);
-}
+.dropdown:hover .dropbtn {background-color: var(--btn-active-accent);}
+
+/*             Print Image Preview            */
+/* ########################################## */
 
 .printImageContainer {
 	background-color: var(--menu-bg-accent2);
 	color: var(--font-white-2);
 	background-color: black;
 	border: 1px solid var(--border-dark-accent);
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	font-size: 100%;
 	position: absolute;
 	top: 15%;
@@ -1128,10 +985,7 @@ body {
 	-ms-user-select: none;
 	user-select: none;
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	.printImageContainer {
 		top: 50% !important;
 		left: 50% !important;
@@ -1140,48 +994,37 @@ body {
 		height: 80% !important;
 	}
 }
-
-#downImgBtn,
-.refreshImgBtn {
-	font-size: 125%;
-	font-weight: 500;
-	color: var(--font-white-2);
-	background-color: var(--menu-bg-accent2);
-	text-decoration: none;
-	padding: 0.35em 1em;
-	border: none;
-	outline: none;
-	border-radius: 20px;
+#downImgBtn, .refreshImgBtn {
+    font-size: 125%;
+    font-weight: 500;
+    color: var(--font-white-2);
+    background-color: var(--menu-bg-accent2);
+    text-decoration: none;
+    padding: 0.35em 1em;
+    border: none;
+    outline: none;
+    border-radius: 20px;
 	margin: 1.35em 0.3em 0em 0.3em;
 }
-
 #imgData {
 	padding: 1.5em 2em;
 }
-
 .prevBtnArea {
 	display: inline-block;
 }
-
 .imgDataArea {
 	display: grid;
 	place-items: center;
 }
+#downImgBtn:hover, .refreshImgBtn:hover { background-color: var(--btn-hover-accent); }
+#downImgBtn:active, .refreshImgBtn:active { background-color: var(--btn-active-accent); }
 
-#downImgBtn:hover,
-.refreshImgBtn:hover {
-	background-color: var(--btn-hover-accent);
-}
-
-#downImgBtn:active,
-.refreshImgBtn:active {
-	background-color: var(--btn-active-accent);
-}
+/*              Number Properties             */
+/* ########################################## */
 
 .numProp {
-	cursor: pointer;
+	cursor:pointer;
 }
-
 .numPropTooltip {
 	max-width: 350px;
 	width: max-content;
@@ -1190,69 +1033,62 @@ body {
 	background-color: var(--menu-bg-accent);
 	position: absolute;
 	z-index: 101;
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	border: 1px solid var(--border-dark-accent);
 }
-
 .numPropTable {
 	text-align: center;
 }
-
 .numPropLabel {
 	color: var(--font-white-1);
 	font-size: 115%;
 	font-weight: 500;
 }
-
 .numValLabel {
 	color: var(--font-white-2);
 	font-size: 180%;
 	font-weight: 600;
 	padding: 0em;
 }
-
 .numPropCenter {
 	text-align: center;
 }
-
 .numPropSeparator {
 	background-color: var(--separator-accent);
 	border: none;
 	height: 2px;
 }
-
 .numPropBaseLabel {
 	font-size: 90%;
 	text-align: left;
 	margin-left: 0.4em;
 }
-
 .numPropBaseValue {
 	font-size: 110%;
-	font-family: var(--font-family-mono), "Cardo";
+	font-family: var(--font-family-mono), sans-serif;
 }
-
 .numTicXeno {
+/*	font-size: 85%;	*/
+/*	font-family: var(--font-family-mono), bold, sans-serif;	*/
 	font-size: 100%;
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	font-weight: 500;
 }
-
 .numPropValPad {
 	margin-right: 0.4em;
 	margin-left: 0.4em;
 }
-
 .npSmall {
 	font-size: 70%;
 	font-weight: 500;
 	color: var(--separator-accent);
 }
-
 .npLine {
 	line-height: 0.9em;
 }
 
+/*              Edit Ciphers Menu             */
+/* ########################################## */
 
 .editCiphersContainer {
 	position: relative;
@@ -1263,31 +1099,29 @@ body {
 	width: -moz-fit-content;
 	border: 1px solid var(--border-dark-accent);
 }
-
 .custCipherMainTable {
 	margin: 0.5em 0em 0.5em 0em;
 	/*width: 570px;*/
 }
-
-#custCipherNameInput,
-#custCipherCatInput {
+.custCipherTable {
+	/*margin: 0em 0em 0.75em 0em;*/
+}
+#custCipherNameInput, #custCipherCatInput {
 	background: var(--btn-bg-accent);
 	font-size: 125%;
 	color: var(--font-white-2);
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	font-weight: 500;
 	text-align: center;
 	width: 100%;
 	box-sizing: border-box;
 	border: 1px solid var(--border-dark-accent);
 }
-
-#custCipherAlphabet,
-#custCipherGlobVals {
+#custCipherAlphabet, #custCipherGlobVals {
 	background: var(--btn-bg-accent);
 	font-size: 125%;
 	color: var(--font-white-2);
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	font-weight: 500;
 	width: 500px;
 	text-align: center;
@@ -1296,38 +1130,28 @@ body {
 	box-sizing: border-box;
 	border: 1px solid var(--border-dark-accent);
 }
-
 #custCipherGlobVals {
 	font-size: 100%;
 	height: 40px;
 }
-
-#custCipherAlphabet:focus,
-#custCipherGlobVals:focus,
-#custCipherNameInput:focus,
-#custCipherCatInput:focus {
+#custCipherAlphabet:focus, #custCipherGlobVals:focus,
+#custCipherNameInput:focus, #custCipherCatInput:focus {
 	outline: none;
 	border: 1px solid var(--border-dark-accent);
 }
-
-.custCharInd:focus,
-.custCharIndValue:focus {
+.custCharInd:focus, .custCharIndValue:focus {
 	outline: none;
 	border: none;
 }
-
-#diacrChkbox,
-#caseSensChkbox {
+#diacrChkbox, #caseSensChkbox {
 	display: inline-flex;
 	padding: 0em 1em 0.75em 1em;
 }
-
 .custCharIndTable {
 	width: 40px;
 	border-spacing: 0px;
 	border: none;
 }
-
 .custCharIndLabel {
 	text-align: center;
 	background: var(--btn-bg-accent);
@@ -1335,38 +1159,35 @@ body {
 	box-sizing: border-box;
 	border: 1px solid var(--border-dark-accent);
 }
-
 .custCharInd {
 	width: 40px;
 	text-align: center;
 	font-weight: 500;
 	font-size: 150%;
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	border: none;
 	background: transparent;
 	color: var(--font-white-2);
 }
-
 .custCharIndValue {
 	width: 40px;
 	text-align: center;
 	font-weight: 500;
 	font-size: 100%;
 	padding: 0.2em 0.2em 0.2em 0.2em;
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	border: none;
 	background: transparent;
 	color: var(--font-white-2);
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
-	.custCharInd,
-	.custCharIndValue {
+@media (max-width: 911px) { /* mobile */
+	.custCharInd, .custCharIndValue {
 		width: 30px !important;
 	}
 }
+
+/*               Date Calculator              */
+/* ########################################## */
 
 .dateCalcContainer {
 	position: relative;
@@ -1379,35 +1200,26 @@ body {
 	height: 340px;
 	border: 1px solid var(--border-dark-accent);
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	.dateCalcContainer {
 		display: block;
 		height: unset !important;
 	}
 }
-
-.dateCalcTable,
-.dateCalcTable2 {
+.dateCalcTable, .dateCalcTable2 {
 	text-align: center;
 }
-
 .dateCalcTable {
 	margin: auto;
 }
-
 .dateCalcTable2 {
 	line-height: 0.8em;
 	padding: 1em 1em 0.9em 1em;
 	background: var(--btn-bg-accent);
 }
-
 .elemBorderScr {
 	border: 1px solid var(--border-dark-accent);
 }
-
 .dateCalcBg {
 	min-width: 370px;
 	margin: 0em 0em 0em 0.9em;
@@ -1418,32 +1230,24 @@ body {
 	border: 1px solid var(--border-dark-accent);
 	box-sizing: border-box;
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	.dateCalcBg {
 		margin: 1em 0em 0em 0em !important;
 		height: 350px;
 	}
 }
-
 .dateInputLabel {
 	font-weight: 500;
 	font-size: 80%;
 	color: var(--focus-outline);
 }
-
-.dateNthLabel,
-.dateOffsetLabel {
+.dateNthLabel, .dateOffsetLabel {
 	color: var(--separator-accent);
 	font-size: 68%;
 }
-
 .dateOffsetLabel {
 	font-weight: 500;
 }
-
 .dateDescription {
 	box-sizing: border-box;
 	width: 100%;
@@ -1452,109 +1256,95 @@ body {
 	outline: none;
 	border: none;
 	text-align: center;
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	font-weight: 600;
 	font-size: 80%;
 	padding: 0em;
 	line-height: normal !important;
 }
-
 .dateFullTable2 {
 	font-weight: 600;
 	font-size: 128%;
 	color: var(--font-white-2);
 }
-
-.dateInput,
-.dateInputYear,
-.offsetDateInput,
-#queryPosInput {
+.dateInput, .dateInputYear, .offsetDateInput, #queryPosInput {
 	text-align: center;
 	width: 60px;
 	font-size: 150%;
 	color: var(--font-white-1);
 	border: 2px solid var(--border-accent);
 	box-sizing: border-box;
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	font-weight: 500;
 	line-height: 1.1em;
 	background-color: var(--btn-bg-accent);
 }
-
 .offsetDateInput {
 	font-size: 80%;
 	font-weight: 600;
 	color: var(--focus-outline);
 	padding: 0.2em 0em;
 }
-
 .dateInputYear {
 	width: 110px;
 }
-
-#d1full,
-#d2full {
+.dateDetailsText {
+}
+#d1full, #d2full {
 	font-weight: 600;
 }
-
 .endDateLabel {
 	font-size: 85%;
 	margin: 0em 0.4em 0em 0.3em;
 	color: var(--font-white-2);
 	font-weight: 500;
 }
-
 .weekDayLabel {
 	font-weight: 400;
 	font-size: 108%;
 	color: var(--font-white-3);
 }
-
 .durVal {
 	font-weight: 600;
 	color: var(--font-white-2);
 }
-
 .dOfYear {
 	font-weight: 600;
 	color: var(--font-white-3);
 }
-
 #dateDurValues {
 	line-height: 1.1em;
 	color: var(--font-white-3);
 }
-
 .dateDurLine {
 	font-size: 80%;
 	font-weight: 500;
 }
-
 .highlightDurLine {
 	background: var(--highlight-date);
 	padding: 0em 0.5em;
 }
 
+/*                Query Table                 */
+/* ########################################## */
 
 #queryArea {
 	width: 30%;
 	position: absolute;
+	/* border-right: 1px solid var(--border-accent); */
 	top: 45px;
 	left: 100px;
 	overflow: auto;
 	max-height: 92%;
 	border: 1px solid var(--border-accent);
+	/* background-color: var(--query-bg-accent); */
 	resize: horizontal;
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	#queryArea {
 		left: 40px !important;
 	}
 }
-
 .queryPageBtn {
 	font-size: 100%;
 	color: var(--font-white-2);
@@ -1562,7 +1352,6 @@ body {
 	border: 1px solid var(--border-dark-accent);
 	padding: 0em 0.35em;
 }
-
 #queryMinBtn {
 	position: absolute;
 	width: 24px;
@@ -1577,20 +1366,16 @@ body {
 	cursor: pointer;
 	user-select: none;
 }
-
 #queryMinBtn:hover {
 	background-color: var(--btn-bg-accent);
 }
-
 #queryMinBtn:active {
 	background-color: var(--btn-hover-accent);
 }
-
 .queryTextResult {
 	padding: 1em;
 	line-height: 2em;
 }
-
 .qSlider {
 	-webkit-appearance: none;
 	width: calc(100% - 24px);
@@ -1603,11 +1388,9 @@ body {
 	display: block;
 	box-sizing: border-box;
 }
-
 .qSlider:hover {
 	opacity: 1;
 }
-
 .qSlider::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	appearance: none;
@@ -1616,20 +1399,18 @@ body {
 	background: var(--border-dark-accent);
 	cursor: pointer;
 }
-
 .qSlider::-moz-range-thumb {
 	width: 12px;
 	height: 24px;
 	background: var(--border-accent);
 	cursor: pointer;
 }
-
 #queryPosInput {
 	width: 95px;
 	font-size: 100%;
 	/* background: transparent; */
 	/* border: none; */
-	outline: none;
+	outline: none; 
 	color: var(--font-white-2);
 	caret-color: transparent !important;
 	background-color: var(--body-bg-accent);
@@ -1637,15 +1418,13 @@ body {
 	border-left: none;
 	border-right: none;
 }
-
 #queryPosInput:focus {
 	border: 1px solid var(--focus-outline);
 }
-
 #querySearchInput {
 	text-align: center;
 	width: 100%;
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	font-size: 125%;
 	font-weight: 500;
 	line-height: 1.1em;
@@ -1657,21 +1436,16 @@ body {
 	outline: none;
 	padding: 0.3em 0em;
 }
-
 .minimizeQuery {
 	resize: none !important;
 	transition: 0.2s;
 	transform: translate(calc(-87% - 100px), 0);
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	.minimizeQuery {
 		transform: translate(calc(-87% - 40px), 0) !important;
 	}
 }
-
 .minimizeLabel {
 	position: absolute;
 	margin: 0.3em 1em 0.15em 0.15em;
@@ -1683,9 +1457,11 @@ body {
 	color: var(--border-accent);
 }
 
+/*              Quick Start Guide             */
+/* ########################################## */
 
 #darkOverlay {
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0,0,0,0.5);
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -1693,11 +1469,10 @@ body {
 	left: 0;
 	z-index: 999;
 }
-
 .quickGuide {
 	background-color: var(--menu-bg-accent2);
 	color: var(--font-white-2);
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	font-size: 100%;
 	padding: 1em 2em 1em 2em;
 	position: absolute;
@@ -1709,10 +1484,7 @@ body {
 	z-index: 1000;
 	border: 1px solid var(--border-dark-accent);
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	.quickGuide {
 		top: 50% !important;
 		left: 50% !important;
@@ -1721,53 +1493,45 @@ body {
 		height: 80% !important;
 	}
 }
-
-.qgBold,
-.qgBold2 {
+.qgBold, .qgBold2 {
 	font-size: 100%;
 	font-weight: 500;
 	color: var(--font-white-1);
 }
-
 .qgBold2 {
 	font-size: 150%;
 }
-
 .qgMedium {
 	font-size: 125%;
 }
-
 .qgNote {
 	font-style: italic;
 	font-size: 85%;
 	color: var(--separator-accent);
 }
-
-.qgLink {
+.qgLink{
 	font-size: 100%;
 	color: var(--font-white-1);
 }
-
 .noScroll {
 	overflow: hidden;
 }
-
-.qgBold,
-.qgBold2,
-.qgBoldCoin {
+.qgBold, .qgBold2, .qgBoldCoin {
 	font-size: 100%;
 	font-weight: 500;
 	color: var(--font-white-1);
 }
-
 .qgBold2 {
 	font-size: 150%;
 }
 
+/*                    About                   */
+/* ########################################## */
+
 .contactInfo {
 	background-color: var(--menu-bg-accent2);
 	color: var(--font-white-2);
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	font-size: 100%;
 	text-align: center;
 	padding: 1em 2em 1em 2em;
@@ -1781,21 +1545,17 @@ body {
 	z-index: 1000;
 	border: 1px solid var(--border-dark-accent);
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	.contactInfo {
 		width: 400px !important;
 		height: 80% !important;
 		max-height: 560px !important;
 	}
 }
-
 .cipherInfo {
 	background-color: var(--menu-bg-accent2);
 	color: var(--font-white-2);
-	font-family: var(--font-family), "Cardo", sans-serif;
+	font-family: var(--font-family), "Arial", sans-serif;
 	font-size: 100%;
 	padding: 1em 2em 1em 2em;
 	position: absolute;
@@ -1807,10 +1567,7 @@ body {
 	z-index: 1000;
 	border: 1px solid var(--border-dark-accent);
 }
-
-@media (max-width: 911px) {
-
-	/* mobile */
+@media (max-width: 911px) { /* mobile */
 	.cipherInfo {
 		top: 50% !important;
 		left: 50% !important;
@@ -1819,20 +1576,20 @@ body {
 		height: 80% !important;
 	}
 }
-
 .qgBoldCoin {
 	font-size: 150%;
 	margin: 1em 0em 0.3em 0em;
 }
-
 .qgAddr {
-	font-family: var(--font-family-mono), "Cardo";
+	font-family: var(--font-family-mono), monospace;
 	color: var(--font-white-1);
 }
-
 .qrImg {
 	margin: 1em 0em 2.5em 0em;
 }
+
+/*               Custom Checkbox              */
+/* ########################################## */
 
 .chkLabel {
 	display: block;
@@ -1840,242 +1597,150 @@ body {
 	padding-left: 28px;
 	cursor: pointer;
 }
-
 /* hide default checkbox */
 input[type=checkbox] {
 	visibility: hidden;
 }
-
+/* custom checkbox */
 .custChkBox {
 	position: absolute;
 	top: 50%;
 	transform: translate(0, -50%);
 	left: 0;
-	height: 16px;
-	width: 16px;
+	height: 18px;
+	width: 18px;
 	background-color: var(--btn-bg-accent);
 	border: 1px solid var(--border-accent);
 }
-
-.chkLabel:hover input~.custChkBox {
+.chkLabel:hover input ~ .custChkBox {
 	background-color: var(--btn-hover-accent);
 }
-
-.chkLabel input:active~.custChkBox {
+.chkLabel input:active ~ .custChkBox {
 	background-color: var(--btn-active-accent);
 }
-
-.chkLabel:hover input:checked~.custChkBox {
+.chkLabel:hover input:checked ~ .custChkBox {
 	background-color: var(--btn-hover-accent);
 }
-
-.chkLabel input:checked~.custChkBox {
+.chkLabel input:checked ~ .custChkBox {
 	background-color: var(--btn-bg-accent);
+	/*background-color: var(--btn-hover-accent);*/
 }
-
+/* show checkmark in checkbox when checked*/
 .custChkBox:after {
 	content: "";
 	position: absolute;
 	display: none;
 }
-
-.chkLabel input:checked~.custChkBox:after {
+.chkLabel input:checked ~ .custChkBox:after {
 	display: block;
 }
-
-.chkLabel input[type="checkbox"]:disabled~.custChkBox,
-.colSlider:disabled,
-#queryDBbtn:disabled {
+.chkLabel input[type="checkbox"]:disabled ~ .custChkBox, .colSlider:disabled, #queryDBbtn:disabled {
 	background-color: var(--btn-hover-accent);
 }
-
+/* checkmark style */
 .chkLabel .custChkBox:after {
-	left: 4px;
-	bottom: 4px;
+	left: 6px;
+	bottom: 6px;
 	width: 0px;
 	height: 0px;
 	border: solid 4px var(--checkmark-accent);
 }
 
-
-body,
-#enabledCiphTable {
-	background: #000 !important;
-}
-
-#ChartSpotScroll *,
-#ChartSpot * {
-	background: #000 !important;
-	border-color: #000 !important;
-}
-
-table.phraseGemContainer {
-	width: 768px;
-}
-
-table.phraseGemContainer tbody {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	padding: 30px;
-}
-
-table.phraseGemContainer tbody tr {
-	align-items: end;
-	justify-content: center;
-	flex-direction: column;
-	flex: 0 0 25%;
-	text-align: center;
-}
-
-table.phraseGemContainer tbody tr td {
-	min-width: 100%;
-	margin-bottom: 15px;
-	align-items: end;
-	display: flex;
-	justify-content: center;
-	padding: 0 !important;
-}
-
-
-.phraseGemContainer {
-	border: 0 !important;
-}
-
-#enterPhraseBtn,
-#highlightBox {
-	display: none;
-}
-
-#phraseBox {
-	background-color: #fff;
-	border: 0;
-	padding: 10px 3px;
-	margin-bottom: 20px;
-	color: #000;
-}
-
-.inputheading {
-	font-size: 18px;
-	margin-bottom: 5px;
-}
 .mainheading{
 	font-size: 28px;
 	margin-bottom: 2px;
 	font-family: var(--font-family-alex), "Alex Brush";
 }
 
-#calcOptionsPanel .dropdown:nth-last-child(1) {
+
+/* Sabbir */
+body,#enabledCiphTable {background: #000;}
+#ChartSpotScroll *, #ChartSpot *  {background: #000 !important; border-color: #000 !important;}
+table.phraseGemContainer{width: 768px;}
+table.phraseGemContainer tbody {
+    display: flex;
+	flex-wrap: wrap;justify-content: center;
+	padding: 30px;
+}
+
+table.phraseGemContainer tbody tr {
+	/* width: 100%; */
+    /* display: flex; */
+
+    align-items: end;
+    justify-content: center;
+    flex-direction: column;
+	flex: 0 0 25%;text-align: center;
+}
+
+table.phraseGemContainer tbody tr td {
+    min-width: 100%;
+    margin-bottom: 15px;
+    align-items: end;
+    display: flex;
+    justify-content: center;
+	padding: 0 !important;
+	/* color: #fff !important; */
+}
+
+/* .ChartChar, #capsNameChartBtn font{color: #fff !important;} */
+
+.phraseGemContainer{border: 0 !important;}
+
+#enterPhraseBtn, #highlightBox{display: none;}
+#phraseBox{background-color: #fff; border: 0;padding:10px  3px;margin-bottom: 20px; color: #000;}
+.inputheading{font-size: 18px;margin-bottom: 5px;}
+#calcOptionsPanel .dropdown:nth-last-child(1){
 	display: none;
 }
 
-.numPropTooltip,
-.optionElementTable {
-	background-color: #000 !important;
-}
-
-#ChartTable td {
-	padding: 9px 7px;
-}
+.numPropTooltip,.optionElementTable{background-color: #000 !important;}
+#ChartTable td{padding: 9px 7px ;}
 
 
-#BreakTableContainer {
-	background: #000 !important;
-}
+#BreakTableContainer{background: #000 !important;}
+/* #BreakTableContainer font, .BreakChar, .breakCipher font{color: #fff !important;} */
 
 @media (max-width: 768px) {
 	#phraseBox {
 		width: 350px;
 	}
+	#ChartTable{ width: 100% !important;}
+	#ChartTable td{padding: 10px 0px ;font-size: 18px;}
+	#BreakdownDetails{padding: 0;width: 90% !important;}
+	#ChartSpotScroll {width: 100%;}
+	#ChartSpot{padding: 0 !important; width: 100% !important;margin: 0 !important;display: block !important;}
 
-	#ChartTable {
-		width: 100% !important;
-	}
-
-	#ChartTable td {
-		padding: 10px 0px;
-		font-size: 18px;
-	}
-
-	#BreakdownDetails {
-		padding: 0;
-		width: 90% !important;
-	}
-
-	#ChartSpotScroll {
-		width: 100%;
-	}
-
-	#ChartSpot {
-		padding: 0 !important;
-		width: 100% !important;
-		margin: 0 !important;
-		display: block !important;
-	}
-
-	table.phraseGemContainer tbody {
-		flex-wrap: wrap;
-	}
-
-	table.phraseGemContainer tbody tr {
-		flex: 0 0 50%;
-		margin-bottom: 15px;
-	}
-
-	table.phraseGemContainer {
-		width: 100%;
-	}
+	table.phraseGemContainer tbody{flex-wrap: wrap;}
+	table.phraseGemContainer tbody tr{flex: 0 0 50%;margin-bottom: 15px;}
+	table.phraseGemContainer{width: 100%;}
 }
+
+/* @media (min-width: 768px) {
+	.ChartChar, #capsNameChartBtn font{color: #fff !important;}
+	table.phraseGemContainer tbody tr td{color: #fff !important;}
+} */
 
 .dropdown:hover .dropbtn {
-	background-color: #fff;
-	color: #000;
+    background-color: #fff;
+    color: #000;
 }
 
-.intBtn:active,
-.intBtn2:active,
-.ciphEditBtn:active,
-.intBtn3:active,
-.intBtnResetDate:active,
-#queryDBbtn:active,
-#enterPhraseBtn:active,
-.queryPageBtn:active,
-.intBtn:hover,
-.intBtn2:hover,
-.ciphEditBtn:hover,
-.intBtn3:hover,
-.intBtnResetDate:hover,
-#queryDBbtn:hover,
-#enterPhraseBtn:hover,
-.queryPageBtn:hover {
-	color: #000;
-}
+.intBtn:active, .intBtn2:active, .ciphEditBtn:active, .intBtn3:active, .intBtnResetDate:active, #queryDBbtn:active, #enterPhraseBtn:active, .queryPageBtn:active, .intBtn:hover, .intBtn2:hover, .ciphEditBtn:hover, .intBtn3:hover, .intBtnResetDate:hover, #queryDBbtn:hover, #enterPhraseBtn:hover, .queryPageBtn:hover{color: #000;}
 
 
 .dateCalcContainer {
-	border: 1px solid #fff;
-	background: #000;
-}
+    border: 1px solid #fff;
+    background: #000;
+}.dateCalcContainer *{color: #fff;}
 
-.dateCalcContainer * {
-	color: #fff;
-}
-
-.dateCalcTable2 td {
-	background: #000 !important;
-}
-
+.dateCalcTable2 td{background: #000 !important;}
 #dateDurValues {
-	border: 1px solid #fff;
-	padding: 5px 6px;
-	display: block;
+    border: 1px solid #fff;
+    padding: 5px 6px;
+    display: block;
 }
 
-input::placeholder,
-textarea::placeholder {
+input::placeholder, textarea::placeholder{
 	color: #ccc !important;
 }
-
-.color-first-third {
-    color: #F29960 !important; /* Green color for example */
-  }
