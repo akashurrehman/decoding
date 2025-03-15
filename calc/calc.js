@@ -267,7 +267,7 @@ function displayCipherCatDetailed(curCat) {
 				case "Golden Ratio":
 					cipherColor = "#EDC001"; // Yellow
 					break;
-				case "Golden Pie":
+				case "Golden Pi":
 					cipherColor = "#FFFFFF"; // White
 					break;
 				case "Trigonal":
