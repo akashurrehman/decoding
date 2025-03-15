@@ -691,6 +691,10 @@ body {
 	font-weight: 500;
 	font-size: 125%;
 }
+.mP, .mPQ { /* history table - top left cell */
+	font-weight: 400;
+	font-size: 100%;
+}
 .mPQ { /* query table - top left cell */
 	/*width: 300px;*/
 	height: 150px;

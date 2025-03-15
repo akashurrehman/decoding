@@ -1310,11 +1310,14 @@ function updateHistoryTable(hltBoolArr) {
 
 	var dispPhrase = "" // phrase to display inside history table
 	var tmpComment = ""; var commentMatch;
+
+
 	for (x = 0; x < sHistory.length; x++) {
 
 		if (x % 25 == 0 && enabledCiphCount !== 0) { // show header after each 25 phrases
-			ms += '<tr class="cH"><td class="mP"></td>'
-			for (z = 0; z < cipherList.length; z++) {
+			ms += '<tr class="cH"><td class="mP entry">Entry</td>'
+			
+			for (z = cipherList.length - 1; z >=0; z--) {
 				if (cipherList[z].enabled) {
 					curCiphCol = (optColoredCiphers) ? 'color: hsl('+cipherList[z].H+' '+cipherList[z].S+'% '+cipherList[z].L+'% / 1);' : ''
 					if (compactHistoryTable) {
@@ -1343,7 +1346,7 @@ function updateHistoryTable(hltBoolArr) {
 		ms += '<tr><td class="hP" data-ind="'+x+'">' + dispPhrase + '</td>' // hP - history phrase, add data index
 		var col = "" // value color
 
-		for (y = 0; y < cipherList.length; y++) {
+		for (y = cipherList.length - 1; y>=0; y--) {
 			if (cipherList[y].enabled) {
 				curCiph = cipherList[y]
 				gemVal = curCiph.calcGematria(sHistory[x]) // value only
