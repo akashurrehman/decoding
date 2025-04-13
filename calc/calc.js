@@ -279,6 +279,9 @@ function displayCipherCatDetailed(curCat) {
 				case "Novenary":
 					cipherColor = "#5F00B6"; // Purple
 					break;
+				case "Hebrew Novenary":
+					cipherColor = "#5F00B6"; // Purple
+					break;
 				default:
 					cipherColor = "#000000"; // Default to black if no match
 			}
@@ -967,7 +970,6 @@ function toggleCipherCategory(ciph_cat) {
 }
 
 function toggleCipher(c_id, chk = false) {
-    console.log("In toggle cipher method!");
     prevCiphIndex = -1; // reset cipher selection
 
     // Toggle the enabled status of the cipher
@@ -1008,24 +1010,20 @@ function showLastEnabledCipher() {
 
     if (enabledCiphers.length > 0) {
         const lastEnabledCipher = enabledCiphers[0]; // The top cipher should be the most recently enabled
-        console.log("Last Enabled Cipher:", lastEnabledCipher.cipherName);
         return lastEnabledCipher;
     } else {
-        console.log("No enabled ciphers found.");
         return null;
     }
 }
 
 function updateTables(updColorLayout = true) {
     prevCiphIndex = -1; // reset cipher selection
-    console.log("CipherList in updateTables:", cipherList);
 
     // Get the most recently enabled cipher after rearranging
     const lastEnabledCipher = showLastEnabledCipher();
 
     if (lastEnabledCipher) {
         breakCipher = lastEnabledCipher.cipherName; // set breakCipher to the last enabled cipher's name
-        console.log("Break cipher for update word breakdown:", breakCipher);
         updateWordBreakdown(breakCipher, true); // update word breakdown
     }
 
@@ -1098,13 +1096,16 @@ function calcCipherNameHeightPx(str) { // calculate row height inside compact ta
 
 function updateEnabledCipherTable() { // draws a table with phrase gematria for enabled ciphers (odd/even)
 	document.getElementById("enabledCiphTable").innerHTML = "" // clear previous table
+	phr = sVal() // grab current phrase
+
+	const phraseLength = phr.replace(/[^a-zA-Z\u0590-\u05FF]/g, '').length; // supports Hebrew letters too
 	
+	console.log("Cipher list from table:",cipherList);
 	prevCiphIndex = -1 // reset cipher selection
 	updateEnabledCipherCount() // get number of enabled ciphers
 
 	if (enabledCiphCount == 0) return // do not draw the table
 	
-	phr = sVal() // grab current phrase
 	// if (enabledCiphCount == 0 || phr == "") return // no enabled ciphers, empty phraseBox
 	
 	var result_columns = enabledCiphColumns
@@ -1127,6 +1128,14 @@ function updateEnabledCipherTable() { // draws a table with phrase gematria for 
 	
 	for (i = cipherList.length - 1; i >= 0; i--) { // Loop through the list in reverse order
 		if (cipherList[i].enabled) { // for active ciphers
+			// Skip Novenary cipher if less than 3 letters
+            if (cipherList[i].cipherName === "Novenary" && phraseLength < 3) {
+                continue;
+            }
+            // Skip Hebrew Novenary cipher if less than 2 letters
+            if (cipherList[i].cipherName === "Hebrew Novenary" && phraseLength < 2) {
+                continue;
+            }
 			cur_ciph_index++
 			if (!new_row_opened) { // check if new row has to be opened
 				

@@ -26,6 +26,7 @@ class cipher { // cipher constructor class
 
 		if (optGemSubstitutionMode) { // each character is substituted with a correspondent value
 			for (i = 0; i < gemPhrase.length; i++) {
+				
 				cur_char = gemPhrase.charCodeAt(i)
 				ch_pos = this.cArr.indexOf(cur_char)
 				if (ch_pos > -1) { // append value for each found character
@@ -35,6 +36,7 @@ class cipher { // cipher constructor class
 		} else if (optGemMultCharPos) { // multiply each charater value based on character index
 			for (i = 0; i < gemPhrase.length; i++) {
 				cur_char = gemPhrase.charCodeAt(i)
+
 				ch_pos = this.cArr.indexOf(cur_char)
 				if (ch_pos > -1) { // append value for each found character
 					n++
