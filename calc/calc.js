@@ -1095,92 +1095,86 @@ function calcCipherNameHeightPx(str) { // calculate row height inside compact ta
 }
 
 function updateEnabledCipherTable() { // draws a table with phrase gematria for enabled ciphers (odd/even)
-	document.getElementById("enabledCiphTable").innerHTML = "" // clear previous table
-	phr = sVal() // grab current phrase
+    document.getElementById("enabledCiphTable").innerHTML = ""; // clear previous table
+    phr = sVal(); // grab current phrase
 
-	const phraseLength = phr.replace(/[^a-zA-Z\u0590-\u05FF]/g, '').length; // supports Hebrew letters too
-	
-	console.log("Cipher list from table:",cipherList);
-	prevCiphIndex = -1 // reset cipher selection
-	updateEnabledCipherCount() // get number of enabled ciphers
+    // Get cleaned phrase (letters only) and count distinct characters
+    const cleanedPhrase = phr.replace(/[^a-zA-Z\u0590-\u05FF]/g, '');
+    const phraseLength = cleanedPhrase.length;
+    const distinctChars = new Set(cleanedPhrase.toLowerCase()).size; // case-insensitive distinct count
 
-	if (enabledCiphCount == 0) return // do not draw the table
-	
-	// if (enabledCiphCount == 0 || phr == "") return // no enabled ciphers, empty phraseBox
-	
-	var result_columns = enabledCiphColumns
-	if (enabledCiphCount <= enabledCiphColumns) { result_columns = enabledCiphCount }
-	// else if (enabledCiphCount > 6 && enabledCiphCount <= 20) { result_columns = 2 }
-	// else { result_columns = 4 }
+    console.log("Cipher list from table:", cipherList);
+    prevCiphIndex = -1; // reset cipher selection
+    updateEnabledCipherCount(); // get number of enabled ciphers
 
-	var cur_ciph_index = 0 // index of current of enabled cipher that will be added to the table (total # of ciphers added so far + 1)
-	var new_row_opened = false // condition to open new row inside table
-	var odd_col = true // odd = "cipher name - value", even = "value - cipher name", used in each row
-	//var n_of_rows = 0 // number of rows inside cipher table
-	var last_row_elements = 0 // number of ciphers in the last row
-	var ciph_in_row = 0 // count active ciphers in row
-	var cur_col = "" // current cipher color
-	
-	var o = '<table class="phraseGemContainer"><tbody>'
-	
-	//n_of_rows = Math.ceil(cipherList.length / result_columns) // 6.0 => 6 rows, 6.25 => 7 rows
-	last_row_elements = enabledCiphCount % result_columns
-	
-	for (i = cipherList.length - 1; i >= 0; i--) { // Loop through the list in reverse order
-		if (cipherList[i].enabled) { // for active ciphers
-			// Skip Novenary cipher if less than 3 letters
-            if (cipherList[i].cipherName === "Novenary" && phraseLength < 3) {
+    if (enabledCiphCount == 0) return; // do not draw the table
+    
+    var result_columns = enabledCiphColumns;
+    if (enabledCiphCount <= enabledCiphColumns) { 
+        result_columns = enabledCiphCount; 
+    }
+
+    var cur_ciph_index = 0;
+    var new_row_opened = false;
+    var odd_col = true;
+    var last_row_elements = 0;
+    var ciph_in_row = 0;
+    var cur_col = "";
+    
+    var o = '<table class="phraseGemContainer"><tbody>';
+    
+    last_row_elements = enabledCiphCount % result_columns;
+    
+    for (i = cipherList.length - 1; i >= 0; i--) { // Loop through the list in reverse order
+        if (cipherList[i].enabled) { // for active ciphers
+            // Skip Novenary/Hebrew Novenary if less than 3 DISTINCT characters
+            if ((cipherList[i].cipherName === "Novenary" || cipherList[i].cipherName === "Hebrew Novenary") && 
+                (phraseLength < 3 || distinctChars < 3)) {
                 continue;
             }
-            // Skip Hebrew Novenary cipher if less than 2 letters
-            if (cipherList[i].cipherName === "Hebrew Novenary" && phraseLength < 2) {
-                continue;
+            
+            cur_ciph_index++;
+            if (!new_row_opened) { // check if new row has to be opened
+                odd_col = true; // reset on each new row
+                new_row_opened = true;
             }
-			cur_ciph_index++
-			if (!new_row_opened) { // check if new row has to be opened
-				
-				odd_col = true // reset on each new row
-				new_row_opened = true
-			}
-			if (ciph_in_row < result_columns) { // until number of ciphers in row equals number of colums
-				cur_col = (optColoredCiphers) ? 'color: hsl('+cipherList[i].H+' '+cipherList[i].S+'% '+cipherList[i].L+'% / 1);' : ''
-				if (odd_col) { // odd column, "cipher name - value"
-					o += '<tr><td class="phraseGemCiphName" style="'+cur_col+'">'+cipherList[i].cipherName+'</td>'
-					// o += '<td class="phraseGemValueOdd" style="'+cur_col+'">'+cipherList[i].calcGematria(phr)+'</td>'
-					o += '<td class="phraseGemValueOdd" style="'+cur_col+'"><span class="numProp">'+cipherList[i].calcGematria(phr)+'<span></td></tr>'
-					ciph_in_row++
-					odd_col = false
-				} else if (!odd_col) { // even column, "value - cipher name"
-					// o += '<td class="phraseGemValueEven" style="'+cur_col+'">'+cipherList[i].calcGematria(phr)+'</td>'
-					o += '<tr><td class="phraseGemCiphName" style="' + cur_col + '">' + cipherList[i].cipherName + '</td>'
-					o += '<td class="phraseGemValueEven" style="'+cur_col+'"><span class="numProp">'+cipherList[i].calcGematria(phr)+'<span></td></tr>'
-					ciph_in_row++
-					odd_col = true
-				}
-				if (cur_ciph_index == enabledCiphCount && last_row_elements !== 0) { // last enabled cipher is added and last row is not fully populated
-					for (n = 0; n < result_columns - last_row_elements; n++) { // for remaining empty cells in last row
-						if (odd_col) {
-							o += '<td class="phraseGemCiphNameBlank"></td>'
-							o += '<td class="phraseGemValueOdd"></td>'
-							odd_col = false
-						} else if (!odd_col) {
-							o += '<td class="phraseGemValueEven"></td>'
-							o += '<td class="phraseGemCiphNameBlank"></td>'
-							odd_col = true
-						}
-					}
-				}
-				if (ciph_in_row == result_columns) { // check if row needs to be closed
-					o += '</tr>'
-					ciph_in_row = 0 // reset cipher count
-					new_row_opened = false
-				}
-			}
-		}
-	}
-	o += '</tbody></table>'
-	
-	document.getElementById("enabledCiphTable").innerHTML += o
+            if (ciph_in_row < result_columns) { // until number of ciphers in row equals number of colums
+                cur_col = (optColoredCiphers) ? 'color: hsl('+cipherList[i].H+' '+cipherList[i].S+'% '+cipherList[i].L+'% / 1);' : '';
+                if (odd_col) { // odd column, "cipher name - value"
+                    o += '<tr><td class="phraseGemCiphName" style="'+cur_col+'">'+cipherList[i].cipherName+'</td>';
+                    o += '<td class="phraseGemValueOdd" style="'+cur_col+'"><span class="numProp">'+cipherList[i].calcGematria(phr)+'<span></td></tr>';
+                    ciph_in_row++;
+                    odd_col = false;
+                } else if (!odd_col) { // even column, "value - cipher name"
+                    o += '<tr><td class="phraseGemCiphName" style="' + cur_col + '">' + cipherList[i].cipherName + '</td>';
+                    o += '<td class="phraseGemValueEven" style="'+cur_col+'"><span class="numProp">'+cipherList[i].calcGematria(phr)+'<span></td></tr>';
+                    ciph_in_row++;
+                    odd_col = true;
+                }
+                if (cur_ciph_index == enabledCiphCount && last_row_elements !== 0) { // last enabled cipher is added and last row is not fully populated
+                    for (n = 0; n < result_columns - last_row_elements; n++) { // for remaining empty cells in last row
+                        if (odd_col) {
+                            o += '<td class="phraseGemCiphNameBlank"></td>';
+                            o += '<td class="phraseGemValueOdd"></td>';
+                            odd_col = false;
+                        } else if (!odd_col) {
+                            o += '<td class="phraseGemValueEven"></td>';
+                            o += '<td class="phraseGemCiphNameBlank"></td>';
+                            odd_col = true;
+                        }
+                    }
+                }
+                if (ciph_in_row == result_columns) { // check if row needs to be closed
+                    o += '</tr>';
+                    ciph_in_row = 0; // reset cipher count
+                    new_row_opened = false;
+                }
+            }
+        }
+    }
+    o += '</tbody></table>';
+    
+    document.getElementById("enabledCiphTable").innerHTML += o;
 }
 
 // =================== Phrase Box - History Table ===================
