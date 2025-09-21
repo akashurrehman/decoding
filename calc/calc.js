@@ -209,7 +209,7 @@ function createCiphersMenu() { // create menu with all cipher catergories
 	var o = document.getElementById("calcOptionsPanel").innerHTML
 
 	o += '<div class="dropdown">'
-	o += '<button class="dropbtn">Ciphers</button>'
+	o += '<button class="dropbtn">Codex List</button>'
 	o += '<div class="dropdown-content" style="width: 380px;">'
 
 
@@ -280,6 +280,9 @@ function displayCipherCatDetailed(curCat) {
 					cipherColor = "#5F00B6"; // Purple
 					break;
 				case "Hebrew Novenary":
+					cipherColor = "#5F00B6"; // Purple
+					break;
+				case "Greek Novenary":
 					cipherColor = "#5F00B6"; // Purple
 					break;
 				default:
